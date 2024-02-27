@@ -3,9 +3,11 @@ package com.example.demo.service;
 import com.example.demo.DTO.DetalleVentaDTO;
 import com.example.demo.DTO.VentaDTO;
 import com.example.demo.models.*;
+import com.example.demo.repository.RepositoryProducto;
 import com.example.demo.repository.RepositoryVenta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -20,6 +22,8 @@ public class ServiceVenta {
     private ServiceCliente serviceCliente;
     @Autowired
     private ServiceProducto serviceProducto;
+    @Autowired
+    private RepositoryProducto productoRepository;
 
 
     public List<VentaDTO> getVentas() {
@@ -29,7 +33,7 @@ public class ServiceVenta {
     public Venta getVentaPorId(Long id) {
         return repoVenta.findById(id).orElse(null);
     }
-
+    @Transactional
     public void crearVenta(VentaRequest ventaRequest) {
         Venta venta = new Venta();
 
@@ -49,6 +53,12 @@ public class ServiceVenta {
             detalleVenta.setCantidadProducto(productoCantidad.getCantidad());
             detalleVenta.setPrecioProducto(producto.getPrecio());
             detallesVenta.add(detalleVenta);
+
+            // Actualizar el stock del producto
+            int cantidadVendida = productoCantidad.getCantidad();
+            int nuevoStock = producto.getStock() - cantidadVendida;
+            producto.setStock(nuevoStock);
+            serviceProducto.actualizarProducto(producto);
         }
         venta.setDetalleVentas(detallesVenta);
 
@@ -59,6 +69,7 @@ public class ServiceVenta {
         // Guardar la venta en la base de datos
         repoVenta.save(venta);
     }
+
 
     private int calcularTotalVenta(Set<DetalleVenta> detallesVenta) {
         int total = 0;

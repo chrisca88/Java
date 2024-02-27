@@ -40,5 +40,9 @@ public class ServiceProducto {
         repoProd.delete(deleteProducto);
     }
 
+    public void actualizarProducto(Producto producto) {
+        repoProd.save(producto);
+    }
+
 
 }
