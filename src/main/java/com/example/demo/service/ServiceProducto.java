@@ -18,6 +18,10 @@ public class ServiceProducto {
         return repoProd.findAll();
     }
 
+    public Producto getProductoPorId(Long id) {
+        return repoProd.findById(id).orElse(null);
+    }
+
     public void post(Producto producto){
         repoProd.save(producto);
     }
@@ -27,6 +31,7 @@ public class ServiceProducto {
         updateProducto.setNombre(producto.getNombre());
         updateProducto.setDescripcion(producto.getDescripcion());
         updateProducto.setPrecio(producto.getPrecio());
+        updateProducto.setStock((producto.getStock()));
         repoProd.save(updateProducto);
     }
 

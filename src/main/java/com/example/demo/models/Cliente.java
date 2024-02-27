@@ -23,11 +23,13 @@ public class Cliente {
 	private String nombre;
 	private String apellido;
 	private String nacimiento;
+	private int dni;
 
-	public Cliente(String nombre, String apellido, String nacimiento) {
+	public Cliente(String nombre, String apellido, String nacimiento, int dni) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.nacimiento = nacimiento;
+		this.dni = dni;
 	}
 
 	public Cliente() {
@@ -63,6 +65,14 @@ public class Cliente {
 
 	public void setNacimiento(String nacimiento) {
 		this.nacimiento = nacimiento;
+	}
+
+	public int getDni() {
+		return dni;
+	}
+
+	public void setDni(int dni) {
+		this.dni = dni;
 	}
 
 	public int edad (String nacimiento){

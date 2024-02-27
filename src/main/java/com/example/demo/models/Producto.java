@@ -18,12 +18,8 @@ public class Producto {
     private String nombre;
     private String descripcion;
     private int precio;
+    private int stock;
 
-    public Producto(String nombre, String descripcion, int precio) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-    }
 
     public Producto() {
     }
@@ -58,5 +54,13 @@ public class Producto {
 
     public void setPrecio(int precio) {
         this.precio = precio;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }

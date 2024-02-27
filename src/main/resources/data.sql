@@ -4,13 +4,8 @@ VALUES
 (2,'Gonzalez','Carla','14/05/2007'),
 (3,'Rodriguez','Ramiro','05/01/1995');
 
-INSERT INTO Producto (id,descripcion,nombre,precio)
+INSERT INTO Producto (id,descripcion,nombre,stock,precio)
 VALUES
-(1,'Goku','Funko pop Dragon Ball',17000),
-(2,'Luffy','Funko pop One Piece',21000),
-(3,'Pikachu','Funko pop Pokemon',15750);
-
-INSERT INTO Venta (id,producto,total)
-VALUES
-(1,'Funko pop Dragon Ball', 34000),
-(2,'Funko pop One Piece',63000);
+(1,'Goku','Funko pop Dragon Ball',15,17000),
+(2,'Luffy','Funko pop One Piece',4,21000),
+(3,'Pikachu','Funko pop Pokemon',7,15750);

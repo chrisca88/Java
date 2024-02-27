@@ -23,6 +23,11 @@ public class ServiceCliente {
         return clientes.stream().map(cliente -> new ClienteDTO(cliente.getId(),cliente.getNombre(), cliente.getApellido(), cliente.edad(cliente.getNacimiento()))).collect(Collectors.toList());
     }
 
+
+    public Cliente getClienteId(Long id) {
+        return repo.findById(id).orElse(null);
+    }
+
     public void post(Cliente cliente){
         repo.save(cliente);
     }
