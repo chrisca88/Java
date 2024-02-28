@@ -5,12 +5,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 
 public class ObtenerFechaActual {
-    public static Date obtenerFechaActual() {
-        Date fechaActual = null;
+    public static LocalDateTime obtenerFechaActual() {
+        LocalDateTime fechaActual = null;
 
         // Intenta obtener la fecha de la API externa
         try {
@@ -25,7 +27,7 @@ public class ObtenerFechaActual {
 
         // Si no se pudo obtener la fecha de la API externa, se usa la fecha local del sistema
         if (fechaActual == null) {
-            fechaActual = new Date();
+            fechaActual = LocalDateTime.now();
         }
 
         return fechaActual;
@@ -37,11 +39,14 @@ public class ObtenerFechaActual {
         return restTemplate.getForEntity(url, WorldClockResponse.class);
     }
 
-    private static Date parsearFecha(String fecha) {
+    private static LocalDateTime parsearFecha(String fecha) {
         try {
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-            return formatter.parse(fecha);
+            // Crear un formateador para el formato ISO 8601
+            DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+            // Parsear la cadena de fecha en un LocalDateTime
+            return LocalDateTime.parse(fecha, formatter);
         } catch (Exception e) {
+            // Si hay algún error al parsear la fecha, se maneja aquí
             e.printStackTrace();
             return null;
         }

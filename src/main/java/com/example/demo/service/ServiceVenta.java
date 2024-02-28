@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -41,7 +43,8 @@ public class ServiceVenta {
         Cliente cliente = serviceCliente.getClienteId(ventaRequest.getClienteId());
         venta.setCliente(cliente);
 
-        Date fechaActual = ObtenerFechaActual.obtenerFechaActual();
+        LocalDateTime fechaActualLocalDateTime = ObtenerFechaActual.obtenerFechaActual();
+        Date fechaActual = convertirLocalDateTimeADate(fechaActualLocalDateTime);
         venta.setFecha(fechaActual);
 
         // Crear detalles de venta y asociarlos a la venta
@@ -108,6 +111,10 @@ public class ServiceVenta {
             ventadtos.add(ventadto);
         }
         return ventadtos;
+    }
+
+    private Date convertirLocalDateTimeADate(LocalDateTime localDateTime) {
+        return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
     }
 
 }
