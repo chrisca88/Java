@@ -55,14 +55,12 @@ public class ControllerVenta {
             Set<DetalleVentaDTO> detalleVentaDTOs = new HashSet<>();
             for (DetalleVenta detalleVenta : detalleVentas) {
                 DetalleVentaDTO detalleVentaDTO = new DetalleVentaDTO();
-                detalleVentaDTO.setId(detalleVenta.getId());
                 detalleVentaDTO.setCantidadProducto(detalleVenta.getCantidadProducto());
                 detalleVentaDTO.setPrecioProducto(detalleVenta.getPrecioProducto());
                 detalleVentaDTO.setDescripcion(detalleVenta.getDescripcion());
-
                 detalleVentaDTOs.add(detalleVentaDTO);
             }
-            ventaDTO.setDetalleVentas(detalleVentaDTOs);
+//            ventaDTO.setDetalleVentas(detalleVentaDTOs);
         }
         return ventaDTO;
     }

@@ -52,6 +52,9 @@ public class ServiceVenta {
             detalleVenta.setProducto(producto);
             detalleVenta.setCantidadProducto(productoCantidad.getCantidad());
             detalleVenta.setPrecioProducto(producto.getPrecio());
+            detalleVenta.setDescripcion(producto.getDescripcion());
+            detalleVenta.setNombreProducto(producto.getNombre());
+            detalleVenta.setVenta(venta);
             detallesVenta.add(detalleVenta);
 
             // Actualizar el stock del producto
@@ -90,7 +93,7 @@ public class ServiceVenta {
         ventadto.setFecha(venta.getFecha());
         ventadto.setTotal(venta.getTotal());
         ventadto.setCliente(venta.getCliente());
-        ventadto.setDetalleVentas(crearDetalleVentasDTO(venta.getDetalleVentas()));
+        ventadto.setDetalleVentasDTO(crearDetalleVentasDTO(venta.getDetalleVentas()));
         return ventadto;
     }
 
@@ -98,10 +101,10 @@ public class ServiceVenta {
         Set<DetalleVentaDTO> ventadtos = new HashSet<>();
         for (DetalleVenta detalleVenta : detalleVentas) {
             DetalleVentaDTO ventadto = new DetalleVentaDTO();
-            ventadto.setId(detalleVenta.getId());
             ventadto.setCantidadProducto(detalleVenta.getCantidadProducto());
             ventadto.setDescripcion(detalleVenta.getProducto().getNombre());
             ventadto.setPrecioProducto(detalleVenta.getPrecioProducto());
+            ventadto.setNombreProducto(detalleVenta.getNombreProducto());
             ventadtos.add(ventadto);
         }
         return ventadtos;

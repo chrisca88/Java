@@ -4,21 +4,11 @@ import java.util.Set;
 
 public class DetalleVentaDTO {
 
-    private Long id;
+    private String nombreProducto;
     private int cantidadProducto;
     private float precioProducto;
     private String descripcion;
-    private Set<DetalleVentaDTO> detalleventa;
-    private Long idProducto;
-    private String nombreProducto;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public int getCantidadProducto() {
         return cantidadProducto;
@@ -42,22 +32,6 @@ public class DetalleVentaDTO {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public Set<DetalleVentaDTO> getDetalleventa() {
-        return detalleventa;
-    }
-
-    public void setDetalleventa(Set<DetalleVentaDTO> detalleventa) {
-        this.detalleventa = detalleventa;
-    }
-
-    public Long getIdProducto() {
-        return idProducto;
-    }
-
-    public void setIdProducto(Long idProducto) {
-        this.idProducto = idProducto;
     }
 
     public String getNombreProducto() {

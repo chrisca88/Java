@@ -13,7 +13,7 @@ public class VentaDTO {
     private int total;
     private Date fecha;
     private Cliente cliente;
-    private Set<DetalleVenta> detalleVentas;
+    private Set<DetalleVentaDTO> detalleVentasDTO;
 
     public Long getId() {
         return id;
@@ -47,23 +47,20 @@ public class VentaDTO {
         this.cliente = cliente;
     }
 
-    public Set<DetalleVenta> getDetalleVentas() {
-        return detalleVentas;
+//    public Set<DetalleVentaDTO> getDetalleVentas() {
+//        return detalleVentasDTO;
+//    }
+//
+//    public void setDetalleVentasDTO(detalleVentasDTO) {
+//        this.detalleVentasDTO = detalleVentasDTO;
+//    }
+
+
+    public Set<DetalleVentaDTO> getDetalleVentasDTO() {
+        return detalleVentasDTO;
     }
 
-    public void setDetalleVentas(Set<DetalleVentaDTO> detalleVentaDTOS) {
-        this.detalleVentas = convertirDetalleVentaDTO(detalleVentaDTOS);
+    public void setDetalleVentasDTO(Set<DetalleVentaDTO> detalleVentasDTO) {
+        this.detalleVentasDTO = detalleVentasDTO;
     }
-
-    private Set<DetalleVenta> convertirDetalleVentaDTO(Set<DetalleVentaDTO> detalleVentaDTOS) {
-        Set<DetalleVenta> detalleVentas = new HashSet<>();
-        for (DetalleVentaDTO dto : detalleVentaDTOS) {
-            DetalleVenta detalleVenta = new DetalleVenta();
-            detalleVenta.setId(dto.getId());
-            detalleVenta.setCantidadProducto(dto.getCantidadProducto());
-            detalleVentas.add(detalleVenta);
-        }
-        return detalleVentas;
-    }
-
 }
