@@ -105,7 +105,7 @@ public class ServiceVenta {
         for (DetalleVenta detalleVenta : detalleVentas) {
             DetalleVentaDTO ventadto = new DetalleVentaDTO();
             ventadto.setCantidadProducto(detalleVenta.getCantidadProducto());
-            ventadto.setDescripcion(detalleVenta.getProducto().getNombre());
+            ventadto.setDescripcion(detalleVenta.getProducto().getDescripcion());
             ventadto.setPrecioProducto(detalleVenta.getPrecioProducto());
             ventadto.setNombreProducto(detalleVenta.getNombreProducto());
             ventadtos.add(ventadto);
