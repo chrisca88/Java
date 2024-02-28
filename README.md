@@ -40,13 +40,13 @@ API Rest de ventas con implementacion de SpringBoot con JPA.
 - http://localhost:8080/ventas/crear: Genera una nueva venta
 
 ###Valores para probar:
-#INSERT INTO cliente (id,apellido,nombre,nacimiento)
+##INSERT INTO cliente (id,apellido,nombre,nacimiento)
 VALUES
 (1,'Perez','Juan','05/10/1968'),
 (2,'Gonzalez','Carla','14/05/2007'),
 (3,'Rodriguez','Ramiro','05/01/1995');
 
-#INSERT INTO Producto (id,descripcion,nombre,stock,precio)
+##INSERT INTO Producto (id,descripcion,nombre,stock,precio)
 VALUES
 (1,'Funko pop Dragon Ball','Goku',15,17000),
 (2,'Funko pop One Piece','Luffy',4,21000),
