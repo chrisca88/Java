@@ -1,16 +1,14 @@
 package com.example.demo.DTO;
 
 import com.example.demo.models.Cliente;
-import com.example.demo.models.DetalleVenta;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 public class VentaDTO {
 
     private Long id;
-    private int total;
+    private float total;
     private Date fecha;
     private Cliente cliente;
     private Set<DetalleVentaDTO> detalleVentasDTO;
@@ -23,11 +21,11 @@ public class VentaDTO {
         this.id = id;
     }
 
-    public int getTotal() {
+    public float getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(float total) {
         this.total = total;
     }
 
@@ -46,15 +44,6 @@ public class VentaDTO {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
-//    public Set<DetalleVentaDTO> getDetalleVentas() {
-//        return detalleVentasDTO;
-//    }
-//
-//    public void setDetalleVentasDTO(detalleVentasDTO) {
-//        this.detalleVentasDTO = detalleVentasDTO;
-//    }
-
 
     public Set<DetalleVentaDTO> getDetalleVentasDTO() {
         return detalleVentasDTO;

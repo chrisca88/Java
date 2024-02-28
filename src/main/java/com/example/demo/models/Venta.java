@@ -15,9 +15,8 @@ public class Venta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int total;
+    private float total;
     private Date fecha;
-    private int cantidad;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
@@ -36,14 +35,6 @@ public class Venta {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
     }
 
     public Date getFecha() {
@@ -70,25 +61,11 @@ public class Venta {
         this.detalleVentas = detalleVentas;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public float getTotal() {
+        return total;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public DetalleVenta addDetalle(DetalleVenta detalleVenta) {
-        getDetalleVentas().add(detalleVenta);
-        detalleVenta.setVenta(this);
-
-        return detalleVenta;
-    }
-
-    public DetalleVenta removeDetalle(DetalleVenta detalleVenta) {
-        getDetalleVentas().remove(detalleVenta);
-        detalleVenta.setVenta(null);
-
-        return detalleVenta;
+    public void setTotal(float total) {
+        this.total = total;
     }
 }
